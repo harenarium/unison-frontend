@@ -60,7 +60,6 @@ export function connectUser(otheruser) {
     });
   };
 };
-////
 
 export function fetchPlaylistTracks() {
   return (dispatch) => {
@@ -82,15 +81,21 @@ export function fetchResults(connection) {
     return fetch(`${URL}/results`, {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ jwt })
+      body: JSON.stringify({ jwt, connection })
     })
     .then(res => res.json())
     .then(data => {
-      dispatch({ type: 'FETCH_RESULTS', payload: data.playlists })
+      dispatch({ type: 'FETCH_RESULTS', payload: data })
     });
   };
 };
 ////
+export function logOutUser() {
+  return dispatch => {
+    localStorage.clear();
+    return {};
+  };
+};
 
 export function fetchUser(jwt, history) {
   return (dispatch) => {
@@ -106,12 +111,6 @@ export function fetchUser(jwt, history) {
   };
 };
 
-export function logOutUser() {
-  return dispatch => {
-    localStorage.clear();
-    return {};
-  };
-};
 
 export function fetchTracks() {
   return (dispatch) => {

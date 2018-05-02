@@ -10,5 +10,5 @@ export default combineReducers({
   playlist,
   otheruser,
   connection,
-  result
+  result,
 });

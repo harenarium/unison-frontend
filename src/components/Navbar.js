@@ -18,10 +18,10 @@ class Navbar extends Component {
         </Menu.Item>
         <Menu.Item>
           {this.props.currentUser.user_spotify_id ?
+          null:
           <Link to='/about'>
             How it works?
-          </Link>
-          : null}
+          </Link>}
         </Menu.Item>
         <Menu.Item>
           {this.props.currentUser.user_spotify_id ?

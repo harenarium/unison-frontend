@@ -24,6 +24,7 @@ class UserAuthorization extends Component {
       <div>
         <p>this is the user auth success component</p>
         <button onClick={this.props.fetchPlaylists}> update playlists</button>
+        <button onClick={this.props.fetchPlaylistTracks}> update playlist tracks</button>
         <Search />
         <Settings />
       </div>
