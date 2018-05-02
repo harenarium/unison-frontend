@@ -17,7 +17,7 @@ class Navbar extends Component {
           </Link>
         </Menu.Item>
         <Menu.Item>
-          {this.props.currentUser === {} ?
+          {this.props.currentUser.user_spotify_id ?
           <Link to='/about'>
             How it works?
           </Link>

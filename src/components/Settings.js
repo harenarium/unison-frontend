@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import * as actions from '../actions/actions';
 import { connect }  from 'react-redux';
+import SettingsPlaylist from './SettingsPlaylist'
 
 class Settings extends Component {
 
   render(){
-    debugger
     return (
       <div>
         <p>SETTINGS Component</p>
-        {this.props.playlists !=={} ?
-        this.props.playlists.forEach(playlist=> playlist.playlist_name)
+        {this.props.playlists.length !== 0  ?
+        this.props.playlists.map(playlist =>{
+          // return playlist.playlist_name
+          return <SettingsPlaylist key={playlist.playlist_spotify_id} playlist={playlist} />
+        })
         : null}
       </div>
     )
@@ -18,10 +21,9 @@ class Settings extends Component {
 };
 
 function mapStateToProps(state) {
-  debugger
   return {
     playlists: state.playlist
   };
 };
 
-export default connect(()  => ({}), actions)(Settings);
+export default connect(mapStateToProps, actions)(Settings);

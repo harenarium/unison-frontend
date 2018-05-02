@@ -37,6 +37,29 @@ export function fetchPlaylists() {
   };
 };
 
+export function findUser(query) {
+  return (dispatch) => {
+    return fetch(`${URL}/find_user?q=${query}`)
+    .then(res => res.json())
+    .then(user => {
+      dispatch({ type: 'FIND_USER', payload: user })
+    });
+  };
+};
+
+export function connectUser(otheruser) {
+  return (dispatch) => {
+    return fetch(`${URL}/connect_user`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ jwt, otheruser })
+    })
+    .then(res => res.json())
+    .then(user => {
+      dispatch({ type: 'CONNECT_USER', payload: user })
+    });
+  };
+};
 ////
 
 export function fetchPlaylistTracks() {
@@ -53,12 +76,17 @@ export function fetchPlaylistTracks() {
   };
 };
 
-export function findUser(query) {
+
+export function fetchResults(connection) {
   return (dispatch) => {
-    return fetch(`${URL}/fetch_user?q=${query}`)
+    return fetch(`${URL}/results`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ jwt })
+    })
     .then(res => res.json())
-    .then(user => {
-      dispatch({ type: 'FETCH_USER', payload: user.currentUser })
+    .then(data => {
+      dispatch({ type: 'FETCH_RESULTS', payload: data.playlists })
     });
   };
 };
