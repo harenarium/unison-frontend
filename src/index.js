@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom"
 import { Provider } from "react-redux"
 import { store } from './store.js';
+import 'semantic-ui-css/semantic.min.css'
 
 console.log("store.getState() =", store.getState());
 

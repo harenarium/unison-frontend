@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import * as actions from '../actions/actions';
 import { connect }  from 'react-redux';
 import SearchResults from './SearchResults'
+import Connections from './Connections'
+import { Form, Input } from 'semantic-ui-react'
 
 class Search extends Component {
   constructor(){
@@ -10,6 +12,8 @@ class Search extends Component {
       value: ""
     }
   }
+
+
 
   changeHandler = (event) => {
     this.setState({
@@ -25,11 +29,11 @@ class Search extends Component {
   render(){
     return (
       <div>
-        <form onSubmit={this.submitHandler}>
-          <input type="text" value={this.state.value} onChange={this.changeHandler}/>
-          <button>find user</button>
-        </form>
+        <Form onSubmit={this.submitHandler}>
+          <Input action='search' value={this.state.value} onChange={this.changeHandler} placeholder='Search by Spotify id'/>
+        </Form>
         <SearchResults />
+        connections here
       </div>
     )
   }

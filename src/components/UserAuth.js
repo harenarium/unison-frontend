@@ -13,25 +13,23 @@ class UserAuthorization extends Component {
       const code = this.props.location.search.split("?code=")[1];
       this.props.loginUser(code, this.props.history);
       this.props.history.push("/home");
-    } else {
+    } else if (localStorage.length > 0) {
       const token = localStorage.jwt;
-      // this.props.fetchUser(token, this.props.history)
+      this.props.fetchUser(token, this.props.history)
+    } else {
+      this.props.history.push("/");
     }
   }
 
   render(){
     return (
       <div>
-        <p>this is the user auth success component</p>
-        <button onClick={this.props.fetchPlaylists}> update playlists</button>
-        <button onClick={this.props.fetchPlaylistTracks}> update playlist tracks</button>
         <Search />
         <Settings />
       </div>
     )
   }
 };
-
 
 
 export default connect(() => ({}), actions)(UserAuthorization);

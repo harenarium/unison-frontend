@@ -25,7 +25,7 @@ export function loginUser(code, history) {
 
 export function fetchPlaylists() {
   return (dispatch) => {
-    return fetch(`${URL}/update_playlists`, {
+    return fetch(`${URL}/refresh_playlists`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ jwt })
@@ -61,17 +61,33 @@ export function connectUser(otheruser) {
   };
 };
 
-export function fetchPlaylistTracks() {
+export function updatePlaylistTracks() {
   return (dispatch) => {
     return fetch(`${URL}/update_playlist_tracks`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ jwt })
     })
-    .then(res => res.json())
-    .then(data => {
-      dispatch({ type: 'FETCH_PLAYLIST_TRACKS', payload: data.playlists })
-    });
+  };
+};
+
+export function updateUserArtists() {
+  return (dispatch) => {
+    return fetch(`${URL}/update_user_artists`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ jwt })
+    })
+  };
+};
+
+export function updateUserTracks() {
+  return (dispatch) => {
+    return fetch(`${URL}/update_user_tracks`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ jwt })
+    })
   };
 };
 
@@ -91,15 +107,16 @@ export function fetchResults(connection) {
 };
 ////
 export function logOutUser() {
+  console.log("logout");
   return dispatch => {
     localStorage.clear();
-    return {};
+    dispatch({ type: 'LOGOUT', payload: "logout" })
   };
 };
 
 export function fetchUser(jwt, history) {
   return (dispatch) => {
-    return fetch(`${URL}/fetch_user`, {
+    return fetch(`${URL}/find_user`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ jwt })
@@ -141,12 +158,3 @@ export function fetchPlaylist(data) {
     });
   };
 };
-
-export function fetchFoxes() {
-  return (dispatch) => {
-    dispatch({ type: 'LOADING_FOXES' });
-    return fetch(URL)
-      .then(response => response.json())
-      .then(json => dispatch({ type: 'ADD_FOXES', payload: json }));
-  }
-}
