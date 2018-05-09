@@ -5,7 +5,7 @@ import { connect }  from 'react-redux';
 class Results extends Component {
 
   componentDidMount() {
-    this.props.fetchResults(this.props.connection)
+    this.props.fetchResults(this.props.match.params.otherUserId)
   }
 
   render(){
@@ -22,7 +22,7 @@ class Results extends Component {
 
 function mapStateToProps(state) {
   return {
-    connection: state.connection.connectionjwt,
+    // connection: state.connection.connectionjwt,
     results: state.result
   };
 };

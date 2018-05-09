@@ -47,8 +47,8 @@ class Navbar extends Component {
           <Menu.Menu position='right'>
             {this.props.currentUser.user_spotify_id ?
               <Menu.Item>
-                <Link to='/connections'>
-                  connections
+                <Link to='/connect'>
+                  connect
                 </Link>
               </Menu.Item>
               : null}

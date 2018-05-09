@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import * as actions from '../actions/actions';
 import { connect }  from 'react-redux';
-import Settings from './Settings'
+import { Route } from 'react-router-dom';
+import Connections from './Connections'
 import Search from './Search'
 
 class UserAuthorization extends Component {
@@ -24,8 +25,7 @@ class UserAuthorization extends Component {
   render(){
     return (
       <div>
-        <Search />
-        <Settings />
+        <Connections />
       </div>
     )
   }

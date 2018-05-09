@@ -92,12 +92,12 @@ export function updateUserTracks() {
 };
 
 
-export function fetchResults(connection) {
+export function fetchResults(otherUserId) {
   return (dispatch) => {
     return fetch(`${URL}/results`, {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ jwt, connection })
+      body: JSON.stringify({ jwt, otherUserId })
     })
     .then(res => res.json())
     .then(data => {
@@ -128,6 +128,52 @@ export function fetchUser(jwt, history) {
   };
 };
 
+
+export function userSettings(value, checked) {
+  return (dispatch) => {
+    return fetch(`${URL}/settings`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ jwt, value, checked })
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch({ type: 'SETTINGS', payload: data })
+    });
+  };
+};
+
+export function fetchConnections() {
+  console.log("fetching connections");
+  return (dispatch) => {
+    return fetch(`${URL}/user_connections`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ jwt })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("connection reducer");
+      dispatch({ type: 'FETCH_CONNECTIONS', payload: data })
+    });
+  };
+};
+
+export function fetchSettings() {
+  return (dispatch) => {
+    return fetch(`${URL}/get_settings`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ jwt })
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch({ type: 'FETCH_SETTINGS', payload: data })
+    });
+  };
+};
+
+// ----
 
 export function fetchTracks() {
   return (dispatch) => {

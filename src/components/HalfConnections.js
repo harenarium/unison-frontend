@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import * as actions from '../actions/actions';
 import { connect }  from 'react-redux';
 // import SettingsPlaylist from './SettingsPlaylist'
+// import { Form, Checkbox, Button } from 'semantic-ui-react'
 import { Button, Table } from 'semantic-ui-react'
+
 
 class Connections extends Component {
   state = {}
@@ -40,6 +42,31 @@ class Connections extends Component {
               }
             )
             : "no requested connections"
+            }
+            </Table.Body>
+          </Table>
+
+          <Table singleLine>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Pending Connections</Table.HeaderCell>
+                <Table.HeaderCell></Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+            {this.props.connections && Object.keys(this.props.connections).length > 0 && this.props.connections.pending && this.props.connections.pending.length > 0 ? /*<p>one</p>*/
+              this.props.connections.pending.map(pending => {
+                return(
+                  <Table.Row>
+                    <Table.Cell>{pending.user_spotify_id}</Table.Cell>
+                    <Table.Cell></Table.Cell>
+                    {/*reject button?*/}
+                  </Table.Row>
+                )
+              }
+            )
+            : "no completed connections"
             }
             </Table.Body>
           </Table>
