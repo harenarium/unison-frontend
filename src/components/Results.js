@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import * as actions from '../actions/actions';
 import { connect }  from 'react-redux';
 import { Button, Table } from 'semantic-ui-react'
-
+import { PulseLoader }  from 'react-spinners'
 
 class Results extends Component {
 
   componentDidMount() {
-    this.props.fetchResults(this.props.match.params.otherUserId)
+    if (localStorage.length > 0) {
+      this.props.fetchResults(this.props.match.params.otherUserId)
+      const token = localStorage.jwt;
+      this.props.fetchUser(token, this.props.history)
+    } else {
+      this.props.history.push("/");
+    }
   }
 
   render(){
@@ -28,11 +34,16 @@ class Results extends Component {
             this.props.results.resulttracks.map(track => {
               return (
                 <Table.Row>
-                  <Table.Cell>{track.track_name}</Table.Cell>
+                  <Table.Cell>
+                  <p>{track.track_name}</p>
+                  <p>{`${track.artist_name_string} · ${track.album_name}`}</p>
+                  </Table.Cell>
                   <Table.Cell></Table.Cell>
                 </Table.Row>
               )})
-            : "loading..."}
+            : <div style={{"margin": "auto", "width": "0%"}}>
+              <PulseLoader />
+            </div>}
           </Table.Body>
         </Table>
 
@@ -53,7 +64,9 @@ class Results extends Component {
                   <Table.Cell></Table.Cell>
                 </Table.Row>
               )})
-            : "loading..."}
+            :  <div style={{"margin": "auto", "width": "0%"}}>
+              <PulseLoader />
+            </div>}
           </Table.Body>
         </Table>
 
@@ -74,7 +87,10 @@ class Results extends Component {
                   <Table.Cell></Table.Cell>
                 </Table.Row>
               )})
-            : "loading..."}
+            :
+            <div style={{"margin": "auto", "width": "0%"}}>
+              <PulseLoader />
+            </div>}
           </Table.Body>
         </Table>
 

@@ -29,8 +29,8 @@ class Settings extends Component {
     if (localStorage.length > 0) {
       this.props.fetchSettings()
       this.props.fetchPlaylists()
-      // const token = localStorage.jwt;
-      // this.props.fetchUser(token, this.props.history)
+      const token = localStorage.jwt;
+      this.props.fetchUser(token, this.props.history)
     } else {
       this.props.history.push("/");
     }
