@@ -45,14 +45,14 @@ class Navbar extends Component {
 
           {/* right side of fixed nav bar */}
           <Menu.Menu position='right'>
-            {this.props.currentUser.user_spotify_id ?
+            {localStorage.length > 0 ?
               <Menu.Item>
                 <Link to='/connect'>
                   connect
                 </Link>
               </Menu.Item>
               : null}
-            {this.props.currentUser.user_spotify_id ?
+            {localStorage.length > 0 ?
               <Menu.Item>
                 <Link to='/settings'>
                   settings
@@ -67,7 +67,7 @@ class Navbar extends Component {
               </Menu.Item>
             : null}
             <Menu.Item>
-              {this.props.currentUser.user_spotify_id ?
+              {localStorage.length > 0 ?
               <Logout />
               : <Login />}
             </Menu.Item>

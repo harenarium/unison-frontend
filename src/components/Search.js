@@ -6,6 +6,16 @@ import HalfConnections from './HalfConnections'
 import { Form, Input } from 'semantic-ui-react'
 
 class Search extends Component {
+
+  componentDidMount() {
+    if (localStorage.length > 0) {
+      const token = localStorage.jwt;
+      this.props.fetchUser(token, this.props.history)
+    } else {
+      this.props.history.push("/");
+    }
+  }
+
   constructor(){
     super()
     this.state={

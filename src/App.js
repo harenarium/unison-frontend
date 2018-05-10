@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import Navbar from './components/Navbar.js'
-import Login from './components/Login';
+import LoginPage from './components/LoginPage';
 import UserAuthorization from './components/UserAuth';
 import About from './components/About';
 import Settings from './components/Settings'
@@ -18,7 +18,7 @@ class App extends Component {
         <Navbar />
         <br/>
 
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={LoginPage} />
         <Route exact path="/home" component={UserAuthorization} />
         <Route exact path="/about" component={About} />
         <Route exact path="/settings" component={Settings} />
