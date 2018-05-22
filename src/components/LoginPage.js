@@ -10,8 +10,8 @@ import Background from '../background/green-shapes.jpg'
 const Login = () => {
   return (
     <div style={{"paddingTop":"25%"}}>
-    <img style={{position: "fixed", top: '0', left: '0', zIndex: "-999", maxWidth: "100%"}} src={Background}/>
-    <Button size='massive' color='green' as="a" href="http://localhost:3000/api/v1/login">Login With Spotify</Button>
+      <img style={{position: "fixed", top: '0', left: '0', zIndex: "-999", maxWidth: "100%"}} src={Background}/>
+      <Button size='massive' color='green' as="a" href="http://localhost:3000/api/v1/login">Login With Spotify</Button>
     </div>
   )
 }

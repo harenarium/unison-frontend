@@ -19,7 +19,8 @@ class Connections extends Component {
         <div style={{"textAlign": "left"}}>
           <p>CONNECTIONS</p>
 
-          <Table singleLine>
+          <br />
+            <Table singleLine striped>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Connection Requests</Table.HeaderCell>
@@ -44,7 +45,8 @@ class Connections extends Component {
             </Table.Body>
           </Table>
 
-          <Table singleLine>
+          <br />
+            <Table singleLine striped>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Connections</Table.HeaderCell>

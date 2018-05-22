@@ -21,7 +21,9 @@ class Results extends Component {
     return (
       <div style={{"margin": "auto", "width": "40%", "minWidth": "450px"}}>
 
-        <Table singleLine>
+      <div style={{"overflowX": "auto"}}>
+      <br />
+        <Table singleLine striped>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Shared Tracks</Table.HeaderCell>
@@ -46,8 +48,12 @@ class Results extends Component {
             </div>}
           </Table.Body>
         </Table>
+        </div>
 
-        <Table singleLine>
+        <div style={{"overflowX": "auto"}}>
+        <br />
+        
+        <Table singleLine striped>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>More Tracks</Table.HeaderCell>
@@ -60,7 +66,10 @@ class Results extends Component {
             this.props.results.resultmoretracks.map(track => {
               return (
                 <Table.Row>
-                  <Table.Cell>{track.track_name}</Table.Cell>
+                  <Table.Cell>
+                  <p>{track.track_name}</p>
+                  <p>{`${track.artist_name_string} · ${track.album_name}`}</p>
+                  </Table.Cell>
                   <Table.Cell></Table.Cell>
                 </Table.Row>
               )})
@@ -69,8 +78,11 @@ class Results extends Component {
             </div>}
           </Table.Body>
         </Table>
+        </div>
 
-        <Table singleLine>
+        <div style={{"overflowX": "auto"}}>
+        <br />
+        <Table singleLine striped>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Shared Artists</Table.HeaderCell>
@@ -93,6 +105,7 @@ class Results extends Component {
             </div>}
           </Table.Body>
         </Table>
+        </div>
 
 
       </div>
