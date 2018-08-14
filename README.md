@@ -4,8 +4,7 @@ Unison is an app for discovering what tracks and artists you have in common with
 
 ## Demo
 
-coming soon!
-
+https://youtu.be/ZkCGZ8Mp0yM
 
 ## Development setup
 
